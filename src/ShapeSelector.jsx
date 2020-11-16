@@ -5,13 +5,13 @@ import Pentagon from "./shapes/pentagon.png";
 import Hexagon from "./shapes/hexagon.png";
 import Parallelogram from "./shapes/parallelogram.png";
 
-function ShapeSelector() {
+function ShapeSelector({selectShape}) {
   return (
     <div className="main__shape__selector__container">
       <h3>Select a Shape </h3>
 
       <div className="shape__list">
-        <div className="shape__selector">
+        <div className="shape__selector" onClick={selectShape.bind(this,"triangle")}>
           <img
             src={Triangle}
             id="triangle"
@@ -33,17 +33,35 @@ function ShapeSelector() {
         </div>
 
         <div className="shape__selector">
-          <img src={Parallelogram} id="parallelogram" width="40" height="35" alt="parallelogram" />
+          <img
+            src={Parallelogram}
+            id="parallelogram"
+            width="40"
+            height="35"
+            alt="parallelogram"
+          />
           <p>Parallelogram</p>
         </div>
 
         <div className="shape__selector">
-          <img src={Pentagon} id="pentagon" width="40" height="35" alt="pentagon" />
+          <img
+            src={Pentagon}
+            id="pentagon"
+            width="40"
+            height="35"
+            alt="pentagon"
+          />
           <p>Pentagon</p>
         </div>
 
         <div className="shape__selector">
-          <img src={Hexagon} width="40" id="hexagon" height="35" alt="hexagon" />
+          <img
+            src={Hexagon}
+            width="40"
+            id="hexagon"
+            height="35"
+            alt="hexagon"
+          />
           <p>Hexagon</p>
         </div>
       </div>
