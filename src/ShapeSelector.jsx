@@ -7,7 +7,7 @@ import Parallelogram from "./shapes/parallelogram.png";
 
 function ShapeSelector({selectShape}) {
   return (
-    <div className="main__shape__selector__container">
+    <div className="main__selector__container">
       <h3>Select a Shape </h3>
 
       <div className="shape__list">
@@ -22,8 +22,8 @@ function ShapeSelector({selectShape}) {
           <p>Triangle</p>
         </div>
 
-        <div className="shape__selector">
-          <img src={Rectangle} width="40" alt="rectangle" />
+        <div className="shape__selector" onClick={selectShape.bind(this,"rectangle")}>
+          <img src={Rectangle} width="40" alt="rectangle"  />
           <p>Rectangle</p>
         </div>
 

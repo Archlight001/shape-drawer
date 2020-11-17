@@ -10,27 +10,28 @@
   text-align: center;
 }
 
-/* Shape Selector Component Styling */
-
-.main__shape__selector__container {
+.main__selector__container {
   margin: 0 auto;
   width: 40%;
   background-color: rgb(255, 255, 255);
+  padding: 4px;
 }
 
-.main__shape__selector__container h3{
+.main__selector__container h3 {
   text-align: center;
   padding-top: 10px;
 }
 
-.shape__list{
+/* Shape Selector Component Styling */
+
+.shape__list {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin-top: -15px;
 }
 
-.shape__selector{
+.shape__selector {
   display: flex;
   background-color: rgb(245, 241, 241);
   border: solid 1px;
@@ -39,33 +40,102 @@
   padding: 1px;
 }
 
-.shape__selector:hover{
+.shape__selector:hover {
   cursor: pointer;
-  background-color:rgb(8, 131, 231);
+  background-color: rgb(8, 131, 231);
   color: white;
 }
 
-.shape__selector p{
+.shape__selector p {
   margin-left: 5px;
 }
 
-
-#triangle{
+#triangle {
   margin-left: 5px;
   margin-top: 15px;
 }
 
-#square{
+#square {
   margin-top: 15px;
   margin-left: -5px;
 }
 
-#square__p{
+#square__p {
   margin-left: -3px;
 }
 
-#parallelogram,#pentagon,#hexagon{
+#parallelogram,
+#pentagon,
+#hexagon {
   margin-left: 3px;
   margin-top: 5px;
 }
 
+/* Dimension Selector Component Styling */
+
+.dimension__container__heading {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.dimension__container__heading h3 {
+  margin: 0 auto;
+  margin-top: -8px;
+}
+
+.back__arrow {
+  background-color: rgb(1, 69, 100);
+  color: whitesmoke;
+}
+
+.back__arrow:hover {
+  cursor: pointer;
+  background-color: rgb(11, 135, 192);
+  color: black;
+}
+
+.dimension__input__container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dimension__input {
+  background-color: rgb(245, 241, 241);
+  text-align: center;
+  width: 140px;
+  height: 30px;
+  border-color: rgb(11, 135, 192);
+  border-style: solid;
+  border-width: 1px;
+  margin: 2px;
+}
+
+.dimension__input:focus {
+  outline-offset: 0px !important;
+  outline: none !important;
+}
+
+.draw__button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+  width: 100%;
+}
+
+.draw__button {
+  width: 130px;
+  height: 30px;
+  font-size: medium;
+  background-color: rgb(1, 69, 100);
+  color: whitesmoke;
+  border: solid rgb(11, 66, 110) 2px;
+  border-radius: 4px;
+}
+
+.draw__button:hover {
+  cursor: pointer;
+  background-color: rgb(11, 135, 192);
+}
