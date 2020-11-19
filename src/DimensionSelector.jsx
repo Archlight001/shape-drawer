@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-function DimensionSelector({ shape, backHome }) {
+function DimensionSelector({ shape, backHome, drawShape }) {
   const [dimension, setDimension] = useState({});
   const [inputs, setInputs] = useState([]);
 
@@ -43,7 +43,7 @@ function DimensionSelector({ shape, backHome }) {
     }
 
     function setInputValue(e) {
-      setDimension({ ...dimension, [e.target.name]: e.target.value });
+      setDimension({ ...dimension, [e.target.name]: e.target.value.trim() });
     }
 
     if (Object.keys(dimension).length === 0) {
@@ -64,7 +64,46 @@ function DimensionSelector({ shape, backHome }) {
     setInputs(makeInput(selectedShape));
   }, [shape, dimension]);
 
-  console.log(dimension);
+  //Draw function to pass values to ShapeCanvas Component
+  function draw() {
+    //Check values for anomalies before submission
+    var foundAnomaly = false;
+    Object.values(dimension).every((value) => {
+      var charArray = Array.from(value);
+
+      //Check if any field is empty
+      if (charArray.length === 0) {
+        foundAnomaly = true;
+        alert("Non Empty fields are not allowed");
+        return false;
+      }
+
+      //Check if there any non numerical values
+      charArray.every((char) => {
+        if (
+          !["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(char)
+        ) {
+          foundAnomaly = true;
+          alert("Numerical Values only");
+          return false;
+        }
+        return true;
+      });
+
+      if (foundAnomaly === true) {
+        return false;
+      }
+
+      return true;
+    });
+
+    //Pass Values to ShapeCanvas Component if no anomaly is found
+    if (foundAnomaly === false) {
+      drawShape({ Name: shape, ...dimension });
+    }
+  }
+
+  
   return (
     <div className="main__selector__container">
       <div className="dimension__container__heading">
@@ -74,7 +113,9 @@ function DimensionSelector({ shape, backHome }) {
       <div className="dimension__input__container">{inputs}</div>
 
       <div className="draw__button__container">
-        <button className="draw__button">Draw</button>
+        <button className="draw__button" onClick={draw}>
+          Draw
+        </button>
       </div>
     </div>
   );
