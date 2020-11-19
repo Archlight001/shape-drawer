@@ -6,6 +6,45 @@ function DimensionSelector({ shape, backHome }) {
   const [inputs, setInputs] = useState([]);
 
   useEffect(() => {
+    const rectangle = ["Width", "Height"];
+    const square = ["Length"];
+
+    var selectedShape = [];
+
+    switch (shape) {
+      case "rectangle":
+        selectedShape = [...rectangle];
+        break;
+
+      case "square":
+        selectedShape = [...square];
+        break;
+
+      default:
+        break;
+    }
+
+    function makeInput(dimensions) {
+      console.log("Input dimension side ", dimension);
+      var input__dimensions = dimensions.map((value, index) => {
+        return (
+          <input
+            key={index}
+            type="text"
+            name={value}
+            placeholder={`Enter ${value}`}
+            className="dimension__input"
+            value={dimension[value]}
+            onChange={setInputValue}
+          />
+        );
+      });
+      return input__dimensions;
+    }
+
+    function setInputValue(e) {
+      setDimension({ ...dimension, [e.target.name]: e.target.value });
+    }
 
     if (Object.keys(dimension).length === 0) {
       switch (shape) {
@@ -23,49 +62,7 @@ function DimensionSelector({ shape, backHome }) {
     }
 
     setInputs(makeInput(selectedShape));
-
-
   }, [shape, dimension]);
-
-  const rectangle = ["Width", "Height"];
-  const square = ["Length"];
-
-  var selectedShape = [];
-
-  switch (shape) {
-    case "rectangle":
-      selectedShape = [...rectangle];
-      break;
-
-    case "square":
-      selectedShape = [...square];
-      break;
-
-    default:
-      break;
-  }
-
-  function makeInput(dimensions) {
-    console.log("Input dimension side ", dimension);
-    var input__dimensions = dimensions.map((value, index) => {
-      return (
-        <input
-          key={index}
-          type="text"
-          name={value}
-          placeholder={`Enter ${value}`}
-          className="dimension__input"
-          value={dimension[value]}
-          onChange={setInputValue}
-        />
-      );
-    });
-    return input__dimensions;
-  }
-
-  function setInputValue(e) {
-    setDimension({ ...dimension, [e.target.name]: e.target.value });
-  }
 
   console.log(dimension);
   return (
