@@ -138,4 +138,5 @@
 .draw__button:hover {
   cursor: pointer;
   background-color: rgb(11, 135, 192);
+  border-color: rgb(11, 135, 192) ;
 }

@@ -27,7 +27,7 @@ function ShapeSelector({selectShape}) {
           <p>Rectangle</p>
         </div>
 
-        <div className="shape__selector">
+        <div className="shape__selector" onClick={selectShape.bind(this,"square")}>
           <img src={Square} width="40" id="square" height="20" alt="square" />
           <p id="square__p">Square</p>
         </div>
