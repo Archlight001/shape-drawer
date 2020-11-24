@@ -121,11 +121,18 @@
   border-color: rgb(11, 135, 192);
   border-style: solid;
   border-width: 1px;
+  margin-bottom: 10px;
 }
 
 .dimension__select:focus {
   outline-offset: 0px !important;
   outline: none !important;
+}
+
+.check__box label{
+  font-size: small;
+  padding-top: 0px;
+  margin-top: -4px;
 }
 
 .draw__button__container {
