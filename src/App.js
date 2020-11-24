@@ -16,7 +16,7 @@ function App() {
       ) : Object.keys(shape__dimensions).length === 0 ? (
         <DimensionSelector shape={shape} backHome={backHome} drawShape = {drawShape} />
       ) : (
-        <ShapeCanvas shape__dimensions={shape__dimensions} />
+        <ShapeCanvas shape__dimensions={shape__dimensions} drawShape={drawShape} />
       )}
     </div>
   );
