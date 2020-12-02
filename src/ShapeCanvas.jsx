@@ -55,7 +55,7 @@ function ShapeCanvas({ shape__dimensions, drawShape }) {
         path = (
           <path
             d={new Path()
-              ["polygon"]([[350,0],[300,538],[532,500],[418,400],[420,38]])
+              ["polygon"](shape__dimensions["Dimension"])
               .toString()}
           />
         );
@@ -74,6 +74,7 @@ function ShapeCanvas({ shape__dimensions, drawShape }) {
         />
       </div>
 
+      <div className="svg__container">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={width}
@@ -83,6 +84,8 @@ function ShapeCanvas({ shape__dimensions, drawShape }) {
       >
         {path}
       </svg>
+      </div>
+      
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
-function PolygonSelector() {
+function PolygonSelector({ polygonDimensions, setPolygonDimensions }) {
   const [numberOfSides, setSideNumber] = useState(0);
   const [selectors, setSelectors] = useState([]);
-  const [polygonDimensions, setPolygonDimensions] = useState([]);
 
   useEffect(() => {
     if (numberOfSides !== 0) {
@@ -47,15 +46,27 @@ function PolygonSelector() {
     function changeDimension(e) {
       let name = Array.from(e.target.name);
       let value = e.target.value;
-      let pDimensions = [...polygonDimensions];
+      let foundAnomaly = false;
+      Array.from(value).every((v) => {
+        if (!["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(v)) {
+          foundAnomaly = true;
+          return false;
+        }
+        return true;
+      });
 
-      if (name[0] === "x") {
-        pDimensions[parseInt(name[1])][0] = value.trim();
-      } else if (name[0] === "y") {
-        pDimensions[parseInt(name[1])][1] = value.trim();
+      if (!foundAnomaly) {
+        let pDimensions = [...polygonDimensions];
+
+        if (name[0] === "x") {
+          pDimensions[parseInt(name[1])][0] = value.trim()
+        } else if (name[0] === "y") {
+          pDimensions[parseInt(name[1])][1] = value.trim() 
+        }
+
+        setPolygonDimensions([...pDimensions]);
       }
-
-      setPolygonDimensions([...pDimensions]);
+      console.log(value);
     }
 
     console.log(polygonDimensions);
@@ -82,7 +93,7 @@ function PolygonSelector() {
       ["50", "0"],
       ["100", "38"],
       ["82", "100"],
-      ["", "100"],
+      ["18", "100"],
       ["0", "38"],
     ];
     const defaultHexagon = [
@@ -96,11 +107,11 @@ function PolygonSelector() {
     if (e.target.checked) {
       if (polygonDimensions.length === 4) {
         setPolygonDimensions([...defaultParallelogram]);
-      }else if(polygonDimensions.length === 5){
-          setPolygonDimensions([...defaultPentagon])
-      }else if(polygonDimensions.length === 6){
-        setPolygonDimensions([...defaultHexagon])
-    }
+      } else if (polygonDimensions.length === 5) {
+        setPolygonDimensions([...defaultPentagon]);
+      } else if (polygonDimensions.length === 6) {
+        setPolygonDimensions([...defaultHexagon]);
+      }
     } else {
       setPolygonDimensions([]);
     }
